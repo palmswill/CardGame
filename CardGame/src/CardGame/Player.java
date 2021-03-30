@@ -11,11 +11,12 @@ package CardGame;
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  * @author Megha Patel
+ * @author Che-Wei Liu 2021
  */
 public abstract class Player {
 
     private String name; //the unique name for this player
-
+    private Hand hand= new Hand();
     /**
      * A constructor that allows you to set the player's unique ID
      *
@@ -30,6 +31,10 @@ public abstract class Player {
      */
     public String getName() {
         return name;
+    }
+
+    public Hand getHand(){
+        return hand;
     }
 
     /**

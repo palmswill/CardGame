@@ -19,11 +19,16 @@ import java.util.Collections;
 public class GroupOfCards {
 
     //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
+    private ArrayList<Card> cards= new ArrayList<Card>();
+    private int maxSize;//the size of the grouping
 
+    
+    GroupOfCards(){
+
+    }
+    
     public GroupOfCards(int size) {
-        this.size = size;
+        this.maxSize = size;
     }
 
     /**
@@ -43,14 +48,19 @@ public class GroupOfCards {
      * @return the size of the group of cards
      */
     public int getSize() {
-        return size;
+        return cards.size();
     }
 
     /**
      * @param size the max size for the group of cards
      */
-    public void setSize(int size) {
-        this.size = size;
+    public void setMaxSize(int size) {
+        this.maxSize = size;
+    }
+
+    public boolean isEmpty(){
+        return cards.size()==0;
+
     }
 
 }//end class

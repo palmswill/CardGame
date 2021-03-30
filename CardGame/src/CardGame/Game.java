@@ -18,11 +18,13 @@ import java.util.ArrayList;
 public abstract class Game {
 
     private final String name;//the title of the game
-    private ArrayList<Player> players;// the players of the game
+    private ArrayList<RegPlayer> players;// the players of the game
+    public Player winner;
+
 
     public Game(String name) {
         this.name = name;
-        players = new ArrayList();
+        players = new ArrayList<>();
     }
 
     /**
@@ -32,17 +34,28 @@ public abstract class Game {
         return name;
     }
 
+    public void setWinner(RegPlayer player){
+        winner=player;
+    }
+
     /**
      * @return the players of this game
      */
-    public ArrayList<Player> getPlayers() {
+    public ArrayList<RegPlayer> getPlayers() {
         return players;
+    }
+
+    /**
+     * add player to this game
+     */
+    public void setPlayer(String name) {
+        players.add(new RegPlayer(name));
     }
 
     /**
      * @param players the players of this game
      */
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(ArrayList<RegPlayer> players) {
         this.players = players;
     }
 
