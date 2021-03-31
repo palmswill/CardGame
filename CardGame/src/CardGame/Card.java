@@ -124,23 +124,28 @@ public class Card {
     public boolean isLargerEqualCompareTo(Card otherCard) {
         int selfIndex = 0;
         int otherIndex = 0;
+        int selfValue=this.getValue();
+        int otherValue=otherCard.getValue();
 
         for (int i = 0; i < cardSuit.length; i++) {
             if (cardSuit[i] == otherCard.getSuit()) {
                 otherIndex = i;
             }
-            if (cardSuit[i] == otherCard.getSuit()) {
+            if (cardSuit[i] == this.getSuit()) {
                 selfIndex = i;
             }
         }
-        if (this.getValue() >= otherCard.getValue()) {
+        if (selfValue==2||(selfValue==1&& otherValue!=2)) {
             return true;
-        } else {
-            if (selfIndex >= otherIndex) {
-                return true;
-
-            }
+        } 
+        if(otherValue!=2&&otherValue!=1&&selfValue>otherValue){
+            return true;
         }
-        return false;
+        if (selfValue==otherValue){
+            return (selfIndex >= otherIndex);
+
+        }else {
+            return false;
+        }
     }
 }

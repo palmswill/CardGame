@@ -48,8 +48,8 @@ public abstract class Game {
     /**
      * add player to this game
      */
-    public void setPlayer(String name) {
-        players.add(new RegPlayer(name));
+    public void setPlayer(String name,int index ) {
+        players.add(new RegPlayer(name, index));
     }
 
     /**
