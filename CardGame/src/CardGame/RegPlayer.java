@@ -24,10 +24,9 @@ public class RegPlayer extends Player {
 
             System.out.println("Current Player: " + this.getName()+"\n\n");
             this.getHand().displayHand();
-            if (round.getCurrentCard() == null || possibletoGiveRound(round)) {
                 System.out.println("\nEnter the index of card you want to give out,Or press 99 to pass:");
                 int cardIndex = in.nextInt();
-                if (cardIndex==99&&round.currentCard==null){
+                if (cardIndex==99&&round.getCurrentCard().isEmpty()){
                     System.out.println("\n---------------------------------------------------------\n");
                     System.out.println("    You can not not skip as the first Player of the round! ");
                     System.out.println("\n---------------------------------------------------------\n");
@@ -39,25 +38,19 @@ public class RegPlayer extends Player {
                         play(round);
                     }
                 }
-            } else {
-                System.out.println("Impossible to Give Card!");
-
-            }
+            
         } else {
             round.winnerIndex = round.LastPlayerIndex;
 
         }
     }
 
-    public boolean possibletoGiveRound(Round round) {
-        for (int i = 0; i < this.getHand().getCards().size(); i++) {
-            if (this.getHand().getCards().get(i).isLargerEqualCompareTo(round.currentCard)) {
-
-                return true;
-            }
-        }
-        return false;
-    }
+    /**
+     * give the provided card to the round, check if success, if yes, get rid of the card and return true , if no, return false;
+     * @param round
+     * @param cardIndex
+     * @returnif yes, get rid of the card , if no, return false;
+     */
 
     public boolean giveCardtoRoundSucess(Round round, int cardIndex) {
         Card cardGiven = this.getHand().getCards().get(cardIndex - 1);

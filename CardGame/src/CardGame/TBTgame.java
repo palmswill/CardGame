@@ -14,6 +14,16 @@ public class TBTgame extends Game{
     }
     public void play(){
         System.out.println("Welcome to The Big Two \n");
+        System.out.println("The rule is the following: \n");
+        System.out.println("The winning condition is whoever can get rid of their hand first win the game\n");
+        System.out.println("In each round, you can only get rid of a card that is larger then the previous player\n");
+        System.out.println("Each round, the the winner of the last round get to get rid of their card first");
+        System.out.println("Player with Club 3 will start the first round");
+        System.out.println("Compare Number first, then Suite ");
+        System.out.println(" 2 > 1 > Other numbers             \n");
+        System.out.println(" Spade >Heart >Diamond >Club       \n");
+
+
         initalizeGame();
 
     }
@@ -23,8 +33,6 @@ public class TBTgame extends Game{
         setDeck();
         distributeCards();
         startRounds();
-        // System.out.println(this.getPlayers().get(0).getHand().getSize());
-        // this.getPlayers().get(0).getHand().displayHand();
     }
 
     public void startRounds(){
@@ -58,6 +66,11 @@ public class TBTgame extends Game{
 
 
     }
+    /**
+     * distribute card to the players, determine who gets to be the player of the first round by checking 
+     * who got club 3
+     * 
+     */
     public void distributeCards(){
         
         int i=0;

@@ -27,7 +27,11 @@ public class Deck extends GroupOfCards{
     }
 
 
-
+/**
+     * Provide the very top (index 0) card from the deck and remove the card;
+     * 
+     * @return the first card on deck 
+     */
     public Card giveFirstCard(){
         Card firstCard=this.getCards().get(0);
         this.getCards().remove(0);

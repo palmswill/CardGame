@@ -12,6 +12,12 @@ public class Hand extends GroupOfCards {
         this.getCards().add(card);
     }
 
+
+
+    /**
+     * Display all cards in hand;
+     * 
+     */
     public void displayHand(){
 
         for (int i=0;i<this.getCards().size();){
@@ -22,7 +28,6 @@ public class Hand extends GroupOfCards {
                 t++;
                 i++;
             }
-            // CardsInString=(i+1)+": "+this.getCards().get(i).toString();
             System.out.println(CardsInString);
         }
 
