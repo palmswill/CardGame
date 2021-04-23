@@ -3,10 +3,12 @@ package CardGame;
 import java.util.ArrayList;
 
 public class Round {
-    public Card currentCard;
+
+    public ArrayList<Card> currentCard = new ArrayList<Card>();
     public Integer winnerIndex;
     public Integer currentPlayerIndex;
     public Integer LastPlayerIndex;
+    private final CardComparetor COMPARETOR = new CardComparetor();
 
     public void play(int firstPlayerIndex, ArrayList<RegPlayer> playerList, TBTgame game) {
 
@@ -25,7 +27,9 @@ public class Round {
         while (winnerIndex == null && currentPlayerIndex < playerList.size()) {
 
             System.out.println("--------------------------------------------------------\n");
-            System.out.println("     Current Card to beat: " + currentCard + "        \n");
+            System.out.println("     Current Card to beat: " + currentCard + "        \n\n");
+            System.out.println("Remember:  2 > 1 > Other numbers      Number First          \n");
+            System.out.println("           Spade >Heart >Diamond >Club       Suite Second    \n");
             System.out.println("-----------------------------------------------------------\n");
             currentPlayerIndex++;
             if (currentPlayerIndex == playerList.size()) {
@@ -49,32 +53,46 @@ public class Round {
 
     }
 
+    public void playerPlayRound() {
 
+    }
 
     public void displayCurrentCard() {
         System.out.println(currentCard);
     }
 
+    /**
+     *  when called, compare card given to the card that is provided by the last user.
+     * If it is larger, replace the current card and return true;
+     * If it is smaller, return false;
+     * @param cardGiven
+     * @return if the card is sucessfully replaced
+     */
+
     public boolean setCurrentCardSucess(Card cardGiven) {
-        if (currentCard == null) {
-            currentCard = cardGiven;
+
+        if (currentCard.isEmpty()) {
+            currentCard.add(0, cardGiven);
+            System.out.println("init");
             return true;
         } else {
-            if (cardGiven.isLargerEqualCompareTo(currentCard)) {
-                currentCard = cardGiven;
+            if (COMPARETOR.compareCard(cardGiven, currentCard.get(0))) {
+                System.out.println("Compared");
+                currentCard.set(0, cardGiven);
                 return true;
+            } else {
+                System.out.println("--------------------------------------------------------\n");
+                System.out.println(cardGiven.toString() + " is Smaller than " + currentCard.get(0).toString());
+                System.out.println("-----------------------------------------------------------\n");
+
+                return false;
+
             }
-
-            System.out.println("--------------------------------------------------------\n");
-            System.out.println(cardGiven.toString() + " is Smaller than " + currentCard.toString());
-            System.out.println("-----------------------------------------------------------\n");
-
-            return false;
 
         }
     }
 
-    public Card getCurrentCard() {
+    public ArrayList<Card> getCurrentCard() {
         return currentCard;
 
     }
